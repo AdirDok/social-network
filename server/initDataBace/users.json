@@ -1,0 +1,151 @@
+[
+    {
+        "name": "adir",
+        "lastname": "dokarker",
+        "gender": "male",
+        "email": "ad@gmail.com",
+        "password": "11114567Aa",
+        "superAdmin": true
+    },
+    {
+        "name": "moran",
+        "lastname": "dokarker",
+        "gender": "female",
+        "email": "mo@gmail.com",
+        "password": "Moran123456",
+        "admin": true    
+    },  
+    {
+        "name": "Aurelia",
+        "lastname": "Gonzales",
+        "gender": "female",
+        "email": "aurelia@gmail.com",
+        "password": "Aurelia123456"
+    },
+    {
+        "name": "Hays",
+        "lastname": "Wise",
+        "gender": "male",
+        "email": "wise@gmail.com",
+        "password": "Hays123456"
+    },
+    {
+        "name": "Noctilus",
+        "lastname": "Count",
+        "gender": "male",
+        "email": "Noctilus@gmail.com",
+        "password": "Noctilus123456"
+    },
+    {
+        "name": "Khalida",
+        "lastname": "High_Queen ",
+        "gender": "female",
+        "email": "khalida@gmail.com",
+        "password": "Khalida123456"
+    },
+    {
+        "name": "Markus",
+        "lastname": "Wulfhart",
+        "gender": "male",
+        "email": "markus@gmail.com",
+        "password": "Markus123456"
+    },
+    {
+        "name": "Ikit",
+        "lastname": "Claw",
+        "gender": "male",
+        "email": "ikit@gmail.com",
+        "password": "Ikit123456"
+    },
+    {
+        "name": "Snikch",
+        "lastname": "Deathmaster",
+        "gender": "male",
+        "email": "Snikch@gmail.com",
+        "password": "Snikch123456"
+    },
+    {
+        "name": "Queek",
+        "lastname": "Headtaker",
+        "gender": "male",
+        "email": "Queek@gmail.com",
+        "password": "Queek123456"
+    },
+    {
+        "name": "Gor",
+        "lastname": "Rok",
+        "gender": "male",
+        "email": "Gor@gmail.com",
+        "password": "Gor123456"
+    },
+    {
+        "name": "Kroq",
+        "lastname": "Gar",
+        "gender": "male",
+        "email": "Kroq@gmail.com",
+        "password": "Kroq123456"
+    },
+    {
+        "name": "Malekith",
+        "lastname": "king",
+        "gender": "male",
+        "email": "Malekith@gmail.com",
+        "password": "Malekith123456"
+    },
+    {
+        "name": "Morathi",
+        "lastname": "mom",
+        "gender": "female",
+        "email": "Morathi@gmail.com",
+        "password": "Morathi123456"
+    },
+    {
+        "name": "Crone",
+        "lastname": "Hellebron",
+        "gender": "female",
+        "email": "Hellebron@gmail.com",
+        "password": "Hellebron123456"
+    },
+    {
+        "name": "Karl",
+        "lastname": "Franz",
+        "gender": "male",
+        "email": "Karl@gmail.com",
+        "password": "Karl123456"
+    },
+    {
+        "name": "Mannfred",
+        "lastname": "von Carstein",
+        "gender": "male",
+        "email": "Mannfred@gmail.com",
+        "password": "Mannfred123456"
+    },
+    {
+        "name": "noam",
+        "lastname": "dokarker",
+        "gender": "female",
+        "email": "noam@gmaol.com",
+        "password": "Noam123456"
+    },
+    {
+        "name": "billie",
+        "lastname": "eilish",
+        "gender": "female",
+        "email": "billie@gmail.com",
+        "password": "Billie123456"
+    },
+    {
+        "name": "ofir",
+        "lastname": "paraz",
+        "gender": "female",
+        "email": "ofir@gmail.com",
+        "password": "Ofir123456"
+    },
+    {
+        "name": "lior",
+        "lastname": "nhari",
+        "gender": "female",
+        "email": "lior@gmail.com",
+        "password": "Lior123456"
+    }
+]
