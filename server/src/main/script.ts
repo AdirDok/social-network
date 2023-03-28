@@ -5,7 +5,6 @@ import express from 'express';
 import session from 'express-session'
 import conectToMongoDataBace from './conectionToMongoDB';
 
-
 colors.enable();
 env.config();
 // @ts-ignore
@@ -27,16 +26,16 @@ app.use(session({
 }));
 
 app.use(cors({
-    origin: "http://localhost:300",
+    origin: "http://localhost:3000",
     credentials: true
 }));
 
 conectToMongoDataBace()     /* מאתחל DB */
 
 
-import logs from '../routs/logs'
+import logs_route from '../routs/logs'
 
-app.use('/logs', logs)
+app.use('/logs', logs_route)
 
 
 

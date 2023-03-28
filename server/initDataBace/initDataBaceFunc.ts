@@ -7,6 +7,7 @@ import Comments from '../src/schemas/commentsSchema'
 import users_T_model from '../src/T_models/users_T_model'
 import posts_T_model from '../src/T_models/posts_T_model'
 import comments_T_model from '../src/T_models/comments_T_model'
+import SQL from '../src/main/mysqlconfig'
 
 
 const initDataBaceFunc = async () => {
@@ -21,6 +22,8 @@ const initDataBaceFunc = async () => {
     };
     await Users.insertMany(addUsersToDbFromJsonFile);
     const usersArr: users_T_model[] | null = await Users.find();
+
+    await SQL(`use tokens`)
 
     // =====================מכניס עוקבים=================================
 
@@ -176,7 +179,7 @@ const initDataBaceFunc = async () => {
                 autor: Mannfred_von_Carstein._id,
                 content: 'im gonna kill all heumens and inslave them',
                 image: 'https://i.ytimg.com/vi/IgtF1H0JUCQ/maxresdefault.jpg',
-                
+
                 reports: [
 
                     { user: Karl_Franz._id },

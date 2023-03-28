@@ -8,7 +8,7 @@ const conectToMongoDataBace = async (): Promise<void> => {
 
         mongoose.set("strictQuery", false)   /* לבדוק את זה  */
         await connect('mongodb://localhost/social_network')
-        console.log('conected to mongo DB'.bgYellow);
+        console.log('conected to mongo DB'.bgBlue);
 
         const users = await Users.find();
 

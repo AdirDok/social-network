@@ -2,7 +2,8 @@ import express, { Request, Response, Router } from 'express';
 import Users from '../schemas/usersSchema';
 import JWT from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
-import users_T_model from '../T_models/users_T_model';
+import SQL from '../main/mysqlconfig';
+import token_T_model from '../T_models/token_T_model';
 // compile TypeScript error
 // @ts-ignore
 
@@ -55,7 +56,6 @@ router.post('/login', async (req: Request, res: Response) => {
         /* אפשר להטמיע שכחתה סיסמא? */
 
 
-
         // compile TypeScript error
         if (user.superAdmin === true) {
             // @ts-ignore
@@ -87,14 +87,57 @@ router.post('/login', async (req: Request, res: Response) => {
         const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
         const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
 
-        // compile TypeScript error
         // @ts-ignore
         const refreshToken = JWT.sign(refresh_Token_Info, REFRESH_TOKEN_SECRET);
-        // @ts-ignore
-        JWT.sign(access_Token_Info, ACCESS_TOKEN_SECRET, { expiresIn: '15s' }, (err, accessToken) => {
-            if (err) return res.status(400).send({ err_msg: err })
-            return res.send({ msg: 'welcome ' + user.name, data: { accessToken, refreshToken, user } })
-        })
+
+        // ----------------------------------
+        const [currentToken]: token_T_model[] = await SQL(`
+        SELECT * FROM tokens.tokens
+        WHERE user = ?
+        and expired = false `, [user.email]);
+
+        if (currentToken) {
+
+            // @ts-ignore
+            JWT.verify(currentToken.token, ACCESS_TOKEN_SECRET, async (err, tokenData) => {
+
+                if (err?.name == "TokenExpiredError") {
+
+                    await SQL(`UPDATE tokens SET expired = true WHERE id = ?`, [currentToken.id])
+
+                    // @ts-ignore
+                    JWT.sign(access_Token_Info, ACCESS_TOKEN_SECRET, { expiresIn: '10s' }, async (err, accessToken) => {
+                        if (err) return res.status(400).send({ err_msg: err })
+
+                        await SQL(`INSERT INTO tokens(token,user)
+                        values( ? , ? )`, [accessToken, user.email])
+
+                        return res.send({ msg: 'welcome ...(new token .. from if)... ' + user.name, data: { accessToken, refreshToken, user } })
+                    })
+
+                } else {
+                    const accessToken = currentToken.token
+                    return res.send({ msg: 'welcome ...(old token end of if)... ' + user.name, data: { accessToken, refreshToken, user } })
+                }
+            })
+
+
+
+        } else {
+
+            /* אם אין טוקין  */
+            // compile TypeScript error
+            // @ts-ignore
+            JWT.sign(access_Token_Info, ACCESS_TOKEN_SECRET, { expiresIn: '10s' }, async (err, accessToken) => {
+                if (err) return res.status(400).send({ err_msg: err })
+
+                await SQL(`INSERT INTO tokens(token,user)
+                values( ? , ? )`, [accessToken, user.email])
+
+                return res.send({ msg: 'welcome ...(new token..end)... ' + user.name, data: { accessToken, refreshToken, user } })
+            })
+        }
+
 
 
 
@@ -164,7 +207,7 @@ router.post('/register', async (req: Request, res: Response) => {
 
 router.delete('/logout', async (req: Request, res: Response) => {
 
-    
+
 })
 
 
