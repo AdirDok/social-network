@@ -18,7 +18,6 @@ const conectToMongoDataBace = async (): Promise<void> => {
     } catch (err) {
         console.log(err)
     }
-
 };
 
 export default conectToMongoDataBace;

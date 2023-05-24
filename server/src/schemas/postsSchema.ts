@@ -12,7 +12,7 @@ const postsSchema: Schema = new Schema({
     },
     autor: {
         type: Schema.Types.ObjectId,
-        ref: "user"
+        ref: "user"  
     },
     image: {
         type: String

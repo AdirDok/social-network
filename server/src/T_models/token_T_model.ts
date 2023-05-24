@@ -2,7 +2,7 @@ export default interface token_T_model {
     id: number
     token: string
     expired: boolean | number
-    user: string
+    user_Email: string
 
 }
 

@@ -1,4 +1,5 @@
-import express from 'express';
+
+import express from 'express';    /* למרות שאני לא צריך את השורה הזו פה אם אני מוריד אותה אני מקבל טעות בקובץ הראשי  למה ?  */
 declare module 'express-session' {
     interface SessionData {
         superAdmin: boolean;
@@ -17,7 +18,6 @@ declare module 'express-session' {
 // }
 
 // ===============זה לא עובד ===================
-
 
 // import express from 'express';
 

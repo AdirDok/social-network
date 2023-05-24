@@ -1,16 +1,16 @@
 import bcrypt from 'bcrypt'
 import fs from 'fs/promises'
+import SQL from '../src/main/mysqlconfig'
 import Posts from '../src/schemas/postsSchema'
-import { Document as M_Document } from 'mongoose'
 import Users from '../src/schemas/usersSchema'
+import { Document as M_Document } from 'mongoose'
 import Comments from '../src/schemas/commentsSchema'
 import users_T_model from '../src/T_models/users_T_model'
 import posts_T_model from '../src/T_models/posts_T_model'
 import comments_T_model from '../src/T_models/comments_T_model'
-import SQL from '../src/main/mysqlconfig'
 
 
-const initDataBaceFunc = async () => {
+const initDataBaceFunc = async (): Promise<void> => {
     /* add users to DB  */
 
     let addUsersToDbFromJsonFile: string | users_T_model[] = await fs.readFile('./initDataBace/users.json', "utf-8");
@@ -20,8 +20,9 @@ const initDataBaceFunc = async () => {
         // @ts-ignore
         user['password'] = await bcrypt.hash(user['password'], 10)
     };
+    
     await Users.insertMany(addUsersToDbFromJsonFile);
-    const usersArr: users_T_model[] | null = await Users.find();
+    const usersArr: users_T_model[] = await Users.find();
 
     await SQL(`use tokens`)
 

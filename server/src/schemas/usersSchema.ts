@@ -71,7 +71,5 @@ const userSchema: Schema = new Schema({
 }, { versionKey: false })
 
 
-
 const Users = model('user', userSchema)
-
 export default Users
